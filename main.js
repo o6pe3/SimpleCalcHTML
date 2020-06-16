@@ -2,7 +2,7 @@ const screen = document.querySelector('.screen');
 const calc = document.querySelector('.calc');
 
 const updateScreen = (e) => {
-  console.log(e);
+  // console.log(e);
   if (e.type == 'keydown') {
     switch (true) {
       case e.key >= '0' && e.key <= '9': {
@@ -34,7 +34,29 @@ const restoreBtnStyle = (e) => {
     btn.removeAttribute('style');
   }
 };
+
+// https://stackoverflow.com/questions/118241/calculate-text-width-with-javascript/21015393#21015393
+function getTextWidth(text) {
+  // re-use canvas object for better performance
+  var canvas =
+    getTextWidth.canvas ||
+    (getTextWidth.canvas = document.createElement('canvas'));
+  var context = canvas.getContext('2d');
+  context.font = window.getComputedStyle(screen, null).getPropertyValue('font');
+  var metrics = context.measureText(text);
+  return metrics.width;
+}
+
 const updateScreenContent = (digit) => {
+  if (screen.textContent.length >= 20) return;
+  const fr = getTextWidth(screen.textContent) / screen.clientWidth;
+  const style = window
+    .getComputedStyle(screen, null)
+    .getPropertyValue('font-size');
+  let fontSize = parseFloat(style);
+
+  if (fr > 0.85) screen.style.fontSize = `${0.7 * fontSize}px`;
+
   if (screen.textContent == 0) screen.textContent = digit;
   else screen.textContent += digit;
 };

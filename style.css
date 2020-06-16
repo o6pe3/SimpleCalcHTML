@@ -6,7 +6,7 @@
 .container {
   font-family: Roboto, Oxygen, 'Open Sans', 'Helvetica Neue', sans-serif;
   font-size: 30px;
-  max-width: 400px;
+  width: 260px;
   margin: 0 auto;
   text-align: center;
   align-content: center;
@@ -29,7 +29,7 @@
 .calc-btn {
   padding: 1rem 1rem;
   border: #333 1px solid;
-  font-size: 1rem;
+  font-size: 1.4rem;
   user-select: none;
 }
 .calc-btn:hover {
@@ -53,8 +53,8 @@
   grid-column: 1/5;
   text-align: right;
   border: #000 1px solid;
-  /* margin: 1rem; */
-  font-size: 3rem;
-  padding: 1rem;
+  font-size: 2.5rem;
+  padding: 1rem 1rem;
   background: #494c53;
+  height: 3rem;
 }
